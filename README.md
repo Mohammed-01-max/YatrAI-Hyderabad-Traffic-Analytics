@@ -2,6 +2,15 @@
 
 An end-to-end ML-powered traffic intelligence system that predicts **congestion**, **travel time**, **accident risk**, and **air quality** for any route in India — from just 3 inputs: origin, destination, and vehicle type.
 
+
+# CiviTraffic AI
+
+> Real mobility-derived road-traffic analytics and forecasting for Hyderabad
+
+## 🌐 Live Demo
+
+**[🚀 Open CiviTraffic AI](https://YOUR-RENDER-URL.onrender.com)**
+
 ## 🎯 What It Does
 
 ```Shell
