@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="Historical analysis of real mobility-derived road-traffic CO2 emissions in Hyderabad during 2021.">
+    <title>Hyderabad Traffic Analytics | YatrAI</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="/frontend/hyderabad-dashboard.css">
+</head>
+<body>
+    <main class="dashboard-shell">
+        <header class="dashboard-header">
+            <a class="brand" href="/" aria-label="YatrAI Hyderabad analytics home">
+                <span class="brand-mark" aria-hidden="true">Y</span>
+                <span>YatrAI <span class="brand-divider">/</span> Research</span>
+            </a>
+            <span class="dataset-badge"><span class="badge-dot"></span> CHETNA-Road · 2021</span>
+        </header>
+
+        <section class="hero">
+            <p class="eyebrow">SMART CITY · HISTORICAL ANALYTICS</p>
+            <h1>Hyderabad Traffic Analytics</h1>
+            <p class="hero-subtitle">Real mobility-derived road-traffic emissions analysis — Hyderabad, 2021</p>
+            <p class="hero-note">Daily road-traffic CO2 emissions are used as a mobility/traffic-activity proxy.</p>
+        </section>
+
+        <div id="dashboard-status" class="dashboard-status" role="status" aria-live="polite">
+            <span class="loading-spinner" aria-hidden="true"></span>
+            <span>Loading Hyderabad analytics…</span>
+        </div>
+
+        <section class="summary-grid" aria-label="Dataset summary">
+            <article class="summary-card">
+                <span class="card-label">Dataset year</span>
+                <strong class="card-value" id="summary-year">Loading…</strong>
+                <span class="card-caption">CHETNA-Road observations</span>
+            </article>
+            <article class="summary-card">
+                <span class="card-label">Observation days</span>
+                <strong class="card-value" id="summary-days">Loading…</strong>
+                <span class="card-caption">Daily city-level records</span>
+            </article>
+            <article class="summary-card card-accent">
+                <span class="card-label">Mean daily CO2</span>
+                <strong class="card-value" id="summary-mean">Loading…</strong>
+                <span class="card-caption">tonnes/day</span>
+            </article>
+            <article class="summary-card">
+                <span class="card-label">Minimum daily CO2</span>
+                <strong class="card-value" id="summary-min">Loading…</strong>
+                <span class="card-caption">tonnes/day</span>
+            </article>
+            <article class="summary-card">
+                <span class="card-label">Maximum daily CO2</span>
+                <strong class="card-value" id="summary-max">Loading…</strong>
+                <span class="card-caption">tonnes/day</span>
+            </article>
+        </section>
+
+        <section class="content-grid content-grid-two">
+            <article class="panel latest-panel">
+                <div class="panel-heading">
+                    <div>
+                        <p class="eyebrow">MOST RECENT RECORD</p>
+                        <h2>Latest observation</h2>
+                    </div>
+                    <span class="panel-icon" aria-hidden="true">↗</span>
+                </div>
+                <div class="latest-values">
+                    <div>
+                        <span class="detail-label">Date</span>
+                        <strong id="latest-date">Loading…</strong>
+                    </div>
+                    <div>
+                        <span class="detail-label">CO2 emissions</span>
+                        <strong><span id="latest-co2">Loading…</span> <small>tonnes/day</small></strong>
+                    </div>
+                </div>
+                <p class="panel-footnote">Historical observation from the 2021 dataset.</p>
+            </article>
+
+            <article class="panel forecast-panel">
+                <div class="panel-heading">
+                    <div>
+                        <p class="eyebrow">FORECAST METHOD</p>
+                        <h2>Historical forecasting</h2>
+                    </div>
+                    <span class="method-pill" id="model-name">Loading…</span>
+                </div>
+                <p class="forecast-description" id="forecast-description">Loading model details…</p>
+                <p class="panel-footnote">Evaluation uses an untouched chronological test period.</p>
+            </article>
+        </section>
+
+        <section class="panel chart-panel" aria-labelledby="trend-heading">
+            <div class="panel-heading">
+                <div>
+                    <p class="eyebrow">CITY-WIDE SERIES</p>
+                    <h2 id="trend-heading">Daily CO2 trend</h2>
+                </div>
+                <span class="unit-label">tonnes/day</span>
+            </div>
+            <div class="chart-wrap">
+                <canvas id="daily-trend-chart" role="img" aria-label="Daily road-traffic CO2 emissions trend"></canvas>
+                <p class="panel-message" id="trend-message">Loading daily observations…</p>
+            </div>
+        </section>
+
+        <section class="panel performance-panel" aria-labelledby="performance-heading">
+            <div class="panel-heading">
+                <div>
+                    <p class="eyebrow">CHRONOLOGICAL VALIDATION</p>
+                    <h2 id="performance-heading">Model performance</h2>
+                </div>
+                <span class="model-tag" id="performance-model">Loading…</span>
+            </div>
+            <div class="metrics-grid">
+                <div class="metric-item"><span>MAE</span><strong id="metric-mae">Loading…</strong><small>tonnes/day</small></div>
+                <div class="metric-item"><span>RMSE</span><strong id="metric-rmse">Loading…</strong><small>tonnes/day</small></div>
+                <div class="metric-item"><span>R2</span><strong id="metric-r2">Loading…</strong><small>coefficient of determination</small></div>
+                <div class="metric-item"><span>MAPE</span><strong id="metric-mape">Loading…</strong><small>percent</small></div>
+            </div>
+            <p class="panel-footnote">Rolling one-day-ahead historical forecasting based on 2021 observations.</p>
+        </section>
+
+        <section class="panel hotspot-panel" aria-labelledby="hotspots-heading">
+            <div class="panel-heading">
+                <div>
+                    <p class="eyebrow">VALIDATED SPATIAL ANALYSIS</p>
+                    <h2 id="hotspots-heading">Spatial emission hotspots</h2>
+                </div>
+                <span class="unit-label">Upper 5th percentile · ≥90% coverage</span>
+            </div>
+            <p class="section-description">Grid cells ranked by mean daily road-traffic CO2 emissions. Coordinates are shown without inferred road or neighborhood names.</p>
+            <div class="map-frame">
+                <svg id="hotspot-map" viewBox="0 0 760 390" role="img" aria-label="Map plot of validated road-traffic CO2 emission hotspots by latitude and longitude"></svg>
+                <p class="panel-message" id="map-message">Loading validated spatial hotspots…</p>
+            </div>
+            <div class="table-wrap">
+                <table>
+                    <thead>
+                        <tr>
+                            <th scope="col">Rank</th>
+                            <th scope="col">Latitude</th>
+                            <th scope="col">Longitude</th>
+                            <th scope="col">Mean CO2<br><small>tonnes/day</small></th>
+                            <th scope="col">Maximum daily CO2<br><small>tonnes/day</small></th>
+                            <th scope="col">Temporal coverage</th>
+                        </tr>
+                    </thead>
+                    <tbody id="hotspot-rows">
+                        <tr><td colspan="6" class="table-message">Loading validated hotspots…</td></tr>
+                    </tbody>
+                </table>
+            </div>
+        </section>
+
+        <footer class="dashboard-footer">
+            <p>Source: CHETNA-Road, Hyderabad 2021 · 500 m grid · daily observations</p>
+            <p>Road-traffic CO2 emissions serve as an indirect mobility/traffic-activity proxy.</p>
+        </footer>
+    </main>
+    <script src="/frontend/hyderabad-dashboard.js" defer></script>
+</body>
+</html>

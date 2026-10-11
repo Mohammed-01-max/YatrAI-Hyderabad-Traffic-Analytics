@@ -1,0 +1,11 @@
+{
+    "best_model": "Seasonal Naive",
+    "test_mae": 103.7210931486843,
+    "test_rmse": 141.63670515108393,
+    "test_r2": 0.30175037410672934,
+    "test_mape_percent": 2.7486311665101213,
+    "train_rows": 280,
+    "test_rows": 71,
+    "test_start": "2021-10-22",
+    "test_end": "2021-12-31"
+}

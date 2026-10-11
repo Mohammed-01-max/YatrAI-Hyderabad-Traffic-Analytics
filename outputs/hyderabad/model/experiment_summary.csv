@@ -1,0 +1,2 @@
+dataset,target,forecast_type,total_observations,train_rows,validation_rows,test_rows,selected_model,test_MAE,test_RMSE,test_R2,test_MAPE
+CHETNA-Road Hyderabad 2021,daily road-traffic CO2 emissions (tonnes/day),rolling one-day-ahead,351,245,35,71,Ridge,57.98237114827008,79.78746027806302,0.7784211196960391,1.523914272633432

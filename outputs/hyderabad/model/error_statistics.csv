@@ -1,0 +1,2 @@
+test_observations,MAE,RMSE,MAPE,mean_residual,median_residual,residual_std,min_absolute_error,max_absolute_error,max_error_date,underpredictions,overpredictions
+71,57.98237114827011,79.78746027806302,1.5239142726334332,15.147491357824428,12.097228949776309,78.89396635868356,1.4189599366882248,242.70719768783783,2021-11-10,44,27
